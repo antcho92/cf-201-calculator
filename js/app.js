@@ -4,10 +4,10 @@ window.onload = function() {
     var display = document.querySelector('#display p'),
         // creates nodelist of buttons
         buttons = document.getElementsByTagName('button'),
-        clear = document.querySelector('.clear'),
         mem = document.querySelector('.mem'),
         // calcReset turns to true after pressing enter so that next value will reset the clock or an operator will add to the sum
-        calcReset = false;
+        calcReset = false,
+        current = '';
 
     console.log(buttons);
 
@@ -19,6 +19,8 @@ window.onload = function() {
             buttons[i].addEventListener('click', calculate());
         } else if (buttons[i].textContent === 'DEL') {
             buttons[i].addEventListener('click', del());
+        } else if (buttons[i].textContent === '+/-') {
+            buttons[i].addEventListener('click', plusMinus());
         } else {
             buttons[i].addEventListener('click', function() {
                 if (calcReset) {
@@ -30,28 +32,50 @@ window.onload = function() {
             });
         }
     }
-    // Not sure why I need to return an inner function instead of just have the inner part of the function
+    // function for calculations when pressing = button
     function calculate() {
         return function() {
-            display.innerHTML = eval(display.innerHTML);
+            current = eval(display.innerHTML);
+            display.innerHTML = current;
             calcReset = true;
         };
     }
-
+    // function for the DEL button
     function del() {
         return function() {
+            current = display.innerHTML;
             if (calcReset) {
-                display.textContent = '';
+                current = '';
                 calcReset = false;
             } else {
-                display.innerHTML = display.textContent.slice(0, -1);
+                current = current.slice(0, -1);
             }
+            display.textContent = current;
+        };
+    }
+    // Function for the AC button
+    function allClear() {
+        return function() {
+            current = '';
+            display.textContent = current;
         };
     }
 
-    function allClear() {
+    function plusMinus() {
         return function() {
-            display.textContent = '';
+            // For when display is blank and would like to add a negative sign first
+            current = display.textContent;
+            if (current === '') {
+                current = '-';
+            // for when you want to switch the sign of a number that's input in the display already
+            } else {
+                if (current.indexOf('-') == 0) {
+                    current = current.substring(1, current.length);
+                } else {
+                    current = '-' + current;
+                }
+            }
+            display.textContent = current;
         };
     }
 
