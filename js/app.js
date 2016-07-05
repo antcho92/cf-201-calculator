@@ -30,7 +30,7 @@ window.onload = function() {
             });
         }
     }
-
+    // Not sure why I need to return an inner function instead of just have the inner part of the function
     function calculate() {
         return function() {
             display.innerHTML = eval(display.innerHTML);
@@ -39,16 +39,20 @@ window.onload = function() {
     }
 
     function del() {
-        if (calcReset) {
-            display.textContent = '';
-            calcReset = false;
-        } else {
-            display.innerHTML = display.textContent.slice(0, -1);
-        }
+        return function() {
+            if (calcReset) {
+                display.textContent = '';
+                calcReset = false;
+            } else {
+                display.innerHTML = display.textContent.slice(0, -1);
+            }
+        };
     }
 
     function allClear() {
-        display.textContent = '';
+        return function() {
+            display.textContent = '';
+        };
     }
 
 };

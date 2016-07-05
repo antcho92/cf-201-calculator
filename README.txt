@@ -8,5 +8,5 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 - Fix user input bugs
 
 7/5
--Need to fix AC and DEL buttons functionality
+-Fixed AC and DEL functionality but not sure why I need to return a function when doing a callback function
 -Still needs memory
