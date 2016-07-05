@@ -6,3 +6,7 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 - Want to add memory functionality. Will implement with local storage. Need to change how to select memory vs other buttons
 - Still need to fix calc reset bug
 - Fix user input bugs
+
+7/5
+-Need to fix AC and DEL buttons functionality
+-Still needs memory

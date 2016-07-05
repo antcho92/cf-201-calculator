@@ -1,7 +1,7 @@
 window.onload = function() {
 
     // Assign all needed elements
-    var display = document.querySelectorAll('#display p')[0],
+    var display = document.querySelector('#display p'),
         // creates nodelist of buttons
         buttons = document.getElementsByTagName('button'),
         clear = document.querySelector('.clear'),
@@ -14,15 +14,11 @@ window.onload = function() {
     // Create a for loop that makes event handlers for each button in the nodelist buttons
     for (var i = 0; i < buttons.length; i++) {
         if (buttons[i].textContent === "AC") {
-            buttons[i].addEventListener('click', function() {
-                display.innerHTML = '';
-            });
+            buttons[i].addEventListener('click', allClear());
         } else if (buttons[i].textContent === "=") {
             buttons[i].addEventListener('click', calculate());
         } else if (buttons[i].textContent === 'DEL') {
-            buttons[i].addEventListener('click', function() {
-                display.innerHTML = display.textContent.slice(0, -1);
-            });
+            buttons[i].addEventListener('click', del());
         } else {
             buttons[i].addEventListener('click', function() {
                 if (calcReset) {
@@ -41,6 +37,20 @@ window.onload = function() {
             calcReset = true;
         };
     }
+
+    function del() {
+        if (calcReset) {
+            display.textContent = '';
+            calcReset = false;
+        } else {
+            display.innerHTML = display.textContent.slice(0, -1);
+        }
+    }
+
+    function allClear() {
+        display.textContent = '';
+    }
+
 };
 
 
