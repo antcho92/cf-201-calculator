@@ -36,13 +36,13 @@ window.onload = function() {
     // for loop to create operators event handlers
     for (var i = 0; i < operators.length; i++) {
         if (operators[i].textContent === "AC") {
-            operators[i].addEventListener('click', allClear());
+            operators[i].addEventListener('click', allClear);
         } else if (operators[i].textContent === "=") {
-            operators[i].addEventListener('click', calculate());
+            operators[i].addEventListener('click', calculate);
         } else if (operators[i].textContent === 'DEL') {
-            operators[i].addEventListener('click', del());
+            operators[i].addEventListener('click', del);
         } else if (operators[i].textContent === '+/-') {
-            operators[i].addEventListener('click', plusMinus());
+            operators[i].addEventListener('click', plusMinus);
         } else {
             operators[i].addEventListener('click', function() {
                 display.textContent += this.textContent;
@@ -63,56 +63,58 @@ window.onload = function() {
 
 
     // function for calculations when pressing = button
-    function calculate() {
-        return function() {
-            current = eval(display.innerHTML);
-            display.innerHTML = current;
-            calcReset = true;
-        };
+    function calculate(e) {
+
+        current = eval(display.innerHTML);
+        display.innerHTML = current;
+        calcReset = true;
     }
     // function for the DEL button
-    function del() {
-        return function() {
-            current = display.innerHTML;
-            if (calcReset) {
-                current = '';
-                calcReset = false;
-            } else {
-                current = current.slice(0, -1);
-            }
-            display.textContent = current;
-        };
+    function del(e) {
+
+        current = display.innerHTML;
+        if (calcReset) {
+            current = '';
+            calcReset = false;
+        } else {
+            current = current.slice(0, -1);
+        }
+        display.textContent = current;
+
     }
     // Function for the AC button
-    function allClear() {
-        return function() {
-            current = '';
-            display.textContent = current;
-        };
+    function allClear(e) {
+
+        current = '';
+        display.textContent = current;
+
     }
 
-    function plusMinus() {
-        return function() {
-            current = display.textContent;
-            // For when display is blank and would like to add a negative sign first
-            if (current === '') {
-                current = '-';
+    function plusMinus(e) {
+
+        current = display.textContent;
+        // For when display is blank and would like to add a negative sign first
+        if (current === '') {
+            current = '-';
             // for when you want to switch the sign of a number that's input in the display already
+        } else {
+            if (current.indexOf('-') == 0) {
+                current = current.substring(1, current.length);
             } else {
-                if (current.indexOf('-') == 0) {
-                    current = current.substring(1, current.length);
-                } else {
-                    current = '-' + current;
-                }
+                current = '-' + current;
             }
-            display.textContent = current;
-        };
+        }
+        display.textContent = current;
+
     }
 
-    function memSave() {
-        return function() {
-            savedValue = display.textContent;
-        };
+    function memSave(e) {
+
+        if (localStorage.memValue) {
+
+            localStorage.setItem('')
+        }
+
     }
 
 };

@@ -13,3 +13,4 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -Added +/- button
 -Added classes to buttons and added different for loops for event listeners
 -Fixed calcReset functionality
+-Fixed how I used callback functions so I didn't need to return them.
