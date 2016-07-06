@@ -54,24 +54,25 @@ window.onload = function() {
     // for loop for event handlers of memory buttons
     for (var i = 0; i < mem.length; i++) {
         if (mem[i].textContent === "MS") {
-            mem[i].addEventListener('click', memSave())
+            mem[i].addEventListener('click', memSave);
+        } else if (mem[i].textContent === 'MR') {
+            mem[i].addEventListener('click', memRecall);
+        } else if (mem[i].textContent === 'MC') {
+            mem[i].addEventListener('click', memClear);
+        } else {
+            mem[i].addEventListener('click', memAdd);
         }
-        mem[i].addEventListener('click', function() {
-            console.log(this + 'was clicked')
-        });
     }
 
 
     // function for calculations when pressing = button
     function calculate(e) {
-
         current = eval(display.innerHTML);
         display.innerHTML = current;
         calcReset = true;
     }
     // function for the DEL button
     function del(e) {
-
         current = display.innerHTML;
         if (calcReset) {
             current = '';
@@ -80,14 +81,11 @@ window.onload = function() {
             current = current.slice(0, -1);
         }
         display.textContent = current;
-
     }
     // Function for the AC button
     function allClear(e) {
-
         current = '';
         display.textContent = current;
-
     }
 
     function plusMinus(e) {
@@ -105,16 +103,21 @@ window.onload = function() {
             }
         }
         display.textContent = current;
-
     }
 
     function memSave(e) {
-
-        if (localStorage.memValue) {
-
-            localStorage.setItem('')
-        }
-
+        current = display.textContent
+        localStorage.setItem('memValue', current);
     }
-
+    function memRecall(e) {
+        current = localStorage.getItem('memValue');
+        display.textContent = current;
+    }
+    function memClear(e) {
+        localStorage.removeItem('memValue');
+    }
+    function memAdd(e) {
+        var prevMem = localStorage.getItem('memValue');
+        localStorage.setItem('memValue', +prevMem + +current);
+    }
 };

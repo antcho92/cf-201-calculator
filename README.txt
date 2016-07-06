@@ -14,3 +14,7 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -Added classes to buttons and added different for loops for event listeners
 -Fixed calcReset functionality
 -Fixed how I used callback functions so I didn't need to return them.
+
+7/5 9:58
+-Added memory functionality. Mimics the windows basic calculator
+-To be added: gray out MR, M+, and MC when no use of localStorage
