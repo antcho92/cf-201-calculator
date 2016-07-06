@@ -106,6 +106,7 @@ window.onload = function() {
         localStorage.setItem('memValue', current);
         //memCheck();
     }
+
     function memRecall(e) {
         current = localStorage.getItem('memValue');
         if (localStorage.memValue) {
@@ -115,12 +116,14 @@ window.onload = function() {
         }
         display.textContent = current;
     }
+
     function memClear(e) {
         localStorage.removeItem('memValue');
     }
+
     function memAdd(e) {
         var prevMem = localStorage.getItem('memValue');
-        localStorage.setItem('memValue', +prevMem + +current);
+        localStorage.setItem('memValue', eval(prevMem) + eval(current));
     }
     //Perhaps implement a way to gray out memory buttons when nothing is saved
     /*memCheck() {
@@ -138,4 +141,9 @@ window.onload = function() {
 
     }
     memCheck();*/
+
+    document.getElementById('popup').onClick = function() {
+        
+    }
+
 };
