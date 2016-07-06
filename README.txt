@@ -19,3 +19,8 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -Added memory functionality. Mimics the windows basic calculator
 -To be added: gray out MR, M+, and MC when no use of localStorage
 -Need to fix how numbers are brought back with memory recall. Should be added after an operator or replace the current number if there is no operator
+
+7/6
+-To be added: single operator functionality, recall functionality fix
+-Max number of digits?
+-Gray out memory buttons when no memory is saved? Difficult to implement across page reloads
