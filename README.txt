@@ -12,3 +12,4 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -Still needs memory
 -Added +/- button
 -Added classes to buttons and added different for loops for event listeners
+-Fixed calcReset functionality

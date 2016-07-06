@@ -1,25 +1,35 @@
+"use strict";
+
 window.onload = function() {
 
     // Assign all needed elements
     var display = document.querySelector('#display p'),
-        // creates nodelist of for number buttons
+        // creates nodelist for number buttons
         numbers = document.querySelectorAll('button.num'),
-        // creats nodelist of operators
+        // creats nodelist for the operators
         operators = document.querySelectorAll('button.operator'),
         //create nodelist for memory buttons
         mem = document.querySelectorAll('button.mem'),
         // calcReset turns to true after pressing enter so that next value will reset the clock or an operator will add to the sum
         calcReset = false,
-        current = '';
+        current = '',
+        savedValue = '';
 
+    // for debugging
     console.log(numbers);
     console.log(operators);
     console.log(mem);
 
     //create a for loop for the event handlers of numbers
-    for (var i = 0; i < numbers.length; i ++) {
+    for (var i = 0; i < numbers.length; i++) {
         numbers[i].addEventListener('click', function() {
-            current = display.textContent + this.textContent;
+            current = display.textContent;
+            if (calcReset) {
+                current = this.textContent;
+                calcReset = false;
+            } else {
+                current += this.textContent;
+            }
             display.textContent = current;
         });
     }
@@ -35,44 +45,22 @@ window.onload = function() {
             operators[i].addEventListener('click', plusMinus());
         } else {
             operators[i].addEventListener('click', function() {
-                if (calcReset) {
-                    display.textContent = this.textContent;
-                    calcReset = false;
-                } else {
-                    display.textContent += this.textContent;
-                }
+                display.textContent += this.textContent;
+                calcReset = false;
             });
         }
     }
 
     // for loop for event handlers of memory buttons
     for (var i = 0; i < mem.length; i++) {
+        if (mem[i].textContent === "MS") {
+            mem[i].addEventListener('click', memSave())
+        }
         mem[i].addEventListener('click', function() {
             console.log(this + 'was clicked')
         });
     }
 
-    // Create a for loop that makes event handlers for each button in the nodelist buttons
-    /*for (var i = 0; i < buttons.length; i++) {
-        if (buttons[i].textContent === "AC") {
-            buttons[i].addEventListener('click', allClear());
-        } else if (buttons[i].textContent === "=") {
-            buttons[i].addEventListener('click', calculate());
-        } else if (buttons[i].textContent === 'DEL') {
-            buttons[i].addEventListener('click', del());
-        } else if (buttons[i].textContent === '+/-') {
-            buttons[i].addEventListener('click', plusMinus());
-        } else {
-            buttons[i].addEventListener('click', function() {
-                if (calcReset) {
-                    display.textContent = this.textContent;
-                    calcReset = false;
-                } else {
-                    display.textContent += this.textContent;
-                }
-            });
-        }
-    }*/
 
     // function for calculations when pressing = button
     function calculate() {
@@ -105,8 +93,8 @@ window.onload = function() {
 
     function plusMinus() {
         return function() {
-            // For when display is blank and would like to add a negative sign first
             current = display.textContent;
+            // For when display is blank and would like to add a negative sign first
             if (current === '') {
                 current = '-';
             // for when you want to switch the sign of a number that's input in the display already
@@ -121,26 +109,10 @@ window.onload = function() {
         };
     }
 
+    function memSave() {
+        return function() {
+            savedValue = display.textContent;
+        };
+    }
+
 };
-
-
-/* $(document).ready(function() {
-  var calc = "";
-  $('#total').val('0');
-  $("button").click(function() {
-    var next = $(this).attr("value");
-    if (parseInt(next, 10) == next || next === "." || next === "/" || next === "*" || next === "-" || next === "+" || next === "%") {
-      calc += next;
-      $('#total').val(calc);
-  } else if (next === "AC") {
-      calc = "";
-      $('#total').val("0");
-  } else if (next === "CE") {
-      calc = calc.slice(0, -1);
-      $('#total').val(calc);
-    } else if (next === "=") {
-      calc = eval(calc);
-      $('#total').val(calc);
-      }
-  });
-}); */
