@@ -10,3 +10,4 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 7/5
 -Fixed AC and DEL functionality
 -Still needs memory
+-Added +/- button

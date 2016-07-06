@@ -2,17 +2,58 @@ window.onload = function() {
 
     // Assign all needed elements
     var display = document.querySelector('#display p'),
-        // creates nodelist of buttons
-        buttons = document.getElementsByTagName('button'),
-        mem = document.querySelector('.mem'),
+        // creates nodelist of for number buttons
+        numbers = document.querySelectorAll('button.num'),
+        // creats nodelist of operators
+        operators = document.querySelectorAll('button.operator'),
+        //create nodelist for memory buttons
+        mem = document.querySelectorAll('button.mem'),
         // calcReset turns to true after pressing enter so that next value will reset the clock or an operator will add to the sum
         calcReset = false,
         current = '';
 
-    console.log(buttons);
+    console.log(numbers);
+    console.log(operators);
+    console.log(mem);
+
+    //create a for loop for the event handlers of numbers
+    for (var i = 0; i < numbers.length; i ++) {
+        numbers[i].addEventListener('click', function() {
+            current = display.textContent + this.textContent;
+            display.textContent = current;
+        });
+    }
+    // for loop to create operators event handlers
+    for (var i = 0; i < operators.length; i++) {
+        if (operators[i].textContent === "AC") {
+            operators[i].addEventListener('click', allClear());
+        } else if (operators[i].textContent === "=") {
+            operators[i].addEventListener('click', calculate());
+        } else if (operators[i].textContent === 'DEL') {
+            operators[i].addEventListener('click', del());
+        } else if (operators[i].textContent === '+/-') {
+            operators[i].addEventListener('click', plusMinus());
+        } else {
+            operators[i].addEventListener('click', function() {
+                if (calcReset) {
+                    display.textContent = this.textContent;
+                    calcReset = false;
+                } else {
+                    display.textContent += this.textContent;
+                }
+            });
+        }
+    }
+
+    // for loop for event handlers of memory buttons
+    for (var i = 0; i < mem.length; i++) {
+        mem[i].addEventListener('click', function() {
+            console.log(this + 'was clicked')
+        });
+    }
 
     // Create a for loop that makes event handlers for each button in the nodelist buttons
-    for (var i = 0; i < buttons.length; i++) {
+    /*for (var i = 0; i < buttons.length; i++) {
         if (buttons[i].textContent === "AC") {
             buttons[i].addEventListener('click', allClear());
         } else if (buttons[i].textContent === "=") {
@@ -24,14 +65,15 @@ window.onload = function() {
         } else {
             buttons[i].addEventListener('click', function() {
                 if (calcReset) {
-                    display.innerHTML = this.innerHTML;
+                    display.textContent = this.textContent;
                     calcReset = false;
                 } else {
-                    display.innerHTML += this.innerHTML;
+                    display.textContent += this.textContent;
                 }
             });
         }
-    }
+    }*/
+
     // function for calculations when pressing = button
     function calculate() {
         return function() {
