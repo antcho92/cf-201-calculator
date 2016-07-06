@@ -111,6 +111,11 @@ window.onload = function() {
     }
     function memRecall(e) {
         current = localStorage.getItem('memValue');
+        /*if () {
+
+        } else {
+
+        }*/
         display.textContent = current;
     }
     function memClear(e) {
