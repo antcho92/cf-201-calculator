@@ -11,3 +11,4 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -Fixed AC and DEL functionality
 -Still needs memory
 -Added +/- button
+-Added classes to buttons and added different for loops for event listeners
