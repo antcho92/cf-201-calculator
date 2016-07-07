@@ -24,3 +24,7 @@ It is copied from my simple-calculator project but adapted to remove jQuery.
 -To be added: single operator functionality, recall functionality fix
 -Max number of digits?
 -Gray out memory buttons when no memory is saved? Difficult to implement across page reloads
+
+7/7
+-To add: help box that explains calculator and what the buttons do
+-

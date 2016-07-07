@@ -1,14 +1,21 @@
 body {
   background-color: #2F3F73;
 }
-#help {
+
+/*#help {
     text-align: right;
     padding: 30px 60px 0 0;
 }
 
 #popup {
-    
-}
+
+   position:fixed;
+   width:200px;         //Set the popup to have a specific width/height
+   height:250px;
+   border:2px solid #000;  //And give it a border
+
+} */
+
 
 #calculator {
   width: 400px;

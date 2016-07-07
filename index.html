@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html >
-	<head>
-		<meta charset="UTF-8">
-		<title>Vanilla JS Calculator</title>
-        <link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Vanilla JS Calculator</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
-	<div id='help'>
+	<!--<div id='help'>
 		<p>Help</p>
 		<div id='popup'>
-			
 		</div>
-	</div>
+	</div>-->
 
 
 	<div class='text-center' id=calculator>
 		<h4>Simple Calculator</h4>
 
-        <!--Display for the numbers and operators and the result -->
-		<div id="display"><p></p></div>
+		<!--Display for the numbers and operators and the result -->
+		<div id="display">
+			<p></p>
+		</div>
 
-        <!-- The buttons for the calculator -->
+		<!-- The buttons for the calculator -->
 		<div id=buttons>
-            <button class='mem'>MS</button>
+			<button class='mem'>MS</button>
 			<button class='mem' id='memAdd'>M+</button>
-            <button class='mem' id='memClear'>MC</button>
+			<button class='mem' id='memClear'>MC</button>
 			<button class='mem' id='memRecall'>MR</button>
 			<button class='operator'>AC</button>
 			<button class='operator'>DEL</button>
