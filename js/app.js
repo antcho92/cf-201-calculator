@@ -12,7 +12,8 @@ window.onload = function() {
         mem = document.querySelectorAll('button.mem'),
         // calcReset turns to true after pressing enter so that next value will reset the clock or an operator will add to the sum
         calcReset = false,
-        current = '';
+        current = '',
+        maxChars = 25;
 
 
 
@@ -58,6 +59,10 @@ window.onload = function() {
         } else {
             mem[i].addEventListener('click', memAdd);
         }
+    }
+
+    function handleNumber(e) {
+        current = display.innerHTML;
     }
 
 
@@ -142,8 +147,41 @@ window.onload = function() {
     }
     memCheck();*/
 
+    function lengthCheck(e) {
+        if (current.length <= maxChars) {
+
+        }
+    }
+
+    window.onkeyup = function(e) {
+        e.preventDefault();
+        var key = e.keyCode ? e.keyCode : e.which;
+
+        if (key >= 96 && key <= 105) {
+            myCalculator.handleNumber(key - 96)
+        } else if (key === 107) {
+            myCalculator.handleOperator('+');
+        } else if (key === 109) {
+            myCalculator.handleOperator('-');
+        } else if (key === 53) {
+            myCalculator.handleOperator('%');
+        } else if (key === 106) {
+            myCalculator.handleOperator('*');
+        } else if (key === 111) {
+            myCalculator.handleOperator('/');
+        } else if (key === 110) {
+            myCalculator.handleOperator('.');
+        } else if (key === 8) {
+            myCalculator.clearEntry();
+        } else if (key === 46) {
+            myCalculator.allClear();
+        } else if (key === 13) {
+            myCalculator.getTotal();
+        }
+    }
+
     document.getElementById('popup').onClick = function() {
-        
+
     }
 
 };
