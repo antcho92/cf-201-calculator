@@ -12,13 +12,9 @@ window.onload = function() {
         mem = document.querySelectorAll('button.mem'),
         // calcReset turns to true after pressing enter so that next value will reset the clock or an operator will add to the sum
         calcReset = false,
-        current = '',
-        savedValue = '';
+        current = '';
 
-    // for debugging
-    console.log(numbers);
-    console.log(operators);
-    console.log(mem);
+
 
     //create a for loop for the event handlers of numbers
     for (var i = 0; i < numbers.length; i++) {
@@ -65,7 +61,7 @@ window.onload = function() {
     }
 
 
-    // function for calculations when pressing = button
+    // function for calculations when pressing '=' button
     function calculate(e) {
         current = eval(display.innerHTML);
         display.innerHTML = current;
@@ -108,16 +104,46 @@ window.onload = function() {
     function memSave(e) {
         current = display.textContent
         localStorage.setItem('memValue', current);
+        //memCheck();
     }
+
     function memRecall(e) {
         current = localStorage.getItem('memValue');
+        if (localStorage.memValue) {
+            current = localStorage.memValue
+        } else {
+            current = display.textContent;
+        }
         display.textContent = current;
     }
+
     function memClear(e) {
         localStorage.removeItem('memValue');
     }
+
     function memAdd(e) {
         var prevMem = localStorage.getItem('memValue');
-        localStorage.setItem('memValue', +prevMem + +current);
+        localStorage.setItem('memValue', eval(prevMem) + eval(current));
     }
+    //Perhaps implement a way to gray out memory buttons when nothing is saved
+    /*memCheck() {
+        if (localStorage.memValue) {
+            document.getElementById('memAdd').disabled=false;
+            document.getElementById('memRecall').disabled=false;
+            document.getElementById('memClear').disabled=false;
+        } else {
+            document.getElementById('memAdd').disabled=true;
+            document.getElementById('memRecall').disabled=true;
+            document.getElementById('memClear').disabled=true;
+        }
+    }
+    if (localStorage.memValue) {
+
+    }
+    memCheck();*/
+
+    /*document.getElementById('popup').onClick = function() {
+
+    }*/
+
 };

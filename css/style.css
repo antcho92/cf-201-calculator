@@ -1,9 +1,25 @@
 body {
   background-color: #2F3F73;
 }
+
+/*#help {
+    text-align: right;
+    padding: 30px 60px 0 0;
+}
+
+#popup {
+
+   position:fixed;
+   width:200px;         //Set the popup to have a specific width/height
+   height:250px;
+   border:2px solid #000;  //And give it a border
+
+} */
+
+
 #calculator {
   width: 400px;
-  height: 510px;
+  height: 525px;
   margin: auto;
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -14,13 +30,13 @@ body {
 }
 #display {
     width: 85%;
-    height: 40px;
+    height: 50px;
     margin: auto;
     margin-bottom: 5px;
     background-color: #EDEDED;
     color: #000;
     text-align: right;
-    line-height: 45px;
+    line-height: 50px;
 }
 #display p {
     margin-right: 20px;
