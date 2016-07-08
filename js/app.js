@@ -142,8 +142,8 @@ window.onload = function() {
     }
     memCheck();*/
 
-    document.getElementById('popup').onClick = function() {
-        
-    }
+    /*document.getElementById('popup').onClick = function() {
+
+    }*/
 
 };

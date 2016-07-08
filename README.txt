@@ -1,4 +1,4 @@
-This is a dalculator web app using vanilla javascript for application to Code 301 at Code Fellows. It uses localStorage to save content to browser that is retrievable after a screen refresh.
+This is a Calculator web app using vanilla javascript for application to Code 301 at Code Fellows. It uses localStorage to save content to browser that is retrievable after a screen refresh.
 
 It is copied from my simple-calculator project but rewritten in vanilla javascript and does not use jQuery.
 
@@ -8,6 +8,7 @@ Known bugs:
 -Max number of chars in display
 -Multiple operators are possible
 -Plus/minus sign only adds to the front of the chars on display
+
 
 7/1/2016
 - Want to add memory functionality. Will implement with local storage. Need to change how to select memory vs other buttons
@@ -24,7 +25,7 @@ Known bugs:
 
 7/5 9:58
 -Added memory functionality. Mimics the windows basic calculator
--To be added: gray out MR, M+, and MC when no use of localStorage
+-To be added?: gray out MR, M+, and MC when no use of localStorage
 -Need to fix how numbers are brought back with memory recall. Should be added after an operator or replace the current number if there is no operator
 
 7/6
@@ -34,5 +35,4 @@ Known bugs:
 -Fixed memory button functionality
 
 7/7
--To add: help box that explains calculator and what the buttons do
--
+-To add: help box that explains calculator and what the buttons do using modal
